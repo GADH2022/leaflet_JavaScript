@@ -18,3 +18,5 @@ A legend was created to provide context for the map data
 
 
 
+Information when clicked on a marker,
+![image](https://user-images.githubusercontent.com/111449865/210871838-0cec3478-c01d-4513-aeb6-e0d621b5de7b.png)
