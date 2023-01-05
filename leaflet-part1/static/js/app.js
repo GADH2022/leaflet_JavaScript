@@ -63,7 +63,7 @@ function createMap(earthquakes){
 // create basemaps object
 var baseMaps={
     "street Map":streetmap,
-    "Topographic Map":lightmap
+ //   "Topographic Map":lightmap
 
 };    
 
@@ -75,17 +75,44 @@ var overlayMaps={
 var myMap=L.map("map-id",{
     center:[37.09,-95.71],
     zoom:5,
-    layers:[streetmap,earthquakes]
+    layers:[earthquakes]
 
 });
 // create a layer control and add it to the map
 L.control.layers(baseMaps, overlayMaps,{
    collapsed:false
 }).addTo(myMap);
+
+// an object legend
+    var legend = L.control({
+      position: "bottomright"
+    });
+  
+    // details for the legend
+    legend.onAdd = function() {
+      var div = L.DomUtil.create("div", "info legend");
+  
+      var grades = [0, 1, 2, 3, 4, 5];
+      var colors = [ ' #FF4500',
+                      '#FF7F50',
+                      '#FFD700', 
+                      '#FFE4B5',
+                      '32CD32'     
+      ];
+  
+      // Looping through
+      for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+          "<i style='background: " + colors[i] + "'></i> " +
+          grades[i] + (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
+      }
+      return div;
+    };
+  
+    // Finally, we our legend to the map.
+    legend.addTo(myMap);
+
 };
-//baseMaps.addTo(myMap);
-
-
 
 
 
