@@ -14,5 +14,3 @@ Earthquakes with higher magnitudes appear larger and earthquakes with greater de
 Popups that provide additional information about the earthquake were included when a marker is clicked
 A legend was created to provide context for the map data
 =======
-# leaflet_challenge
->>>>>>> fd632b4416018b65c474213fe5701cad7c9f3a03

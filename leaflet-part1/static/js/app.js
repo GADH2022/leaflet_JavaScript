@@ -12,7 +12,8 @@ function createFeatures(earthquakeData){
     function onEachFeature(feature,layer){
         layer.bindPopup(`<h3>${ feature.properties.place}
                         </h3><hr><p>${new Date(feature.properties.time)}
-                        </p>`);
+                        </p><p>Magnitude:${feature.properties.mag}</p>
+                        <p>Number of felt Reports:${feature.properties.felt}</p>`);
     }
     function getColor(magnitude){
         if(magnitude > 5){
@@ -33,7 +34,7 @@ function createFeatures(earthquakeData){
 
         }
         else {
-            return '32CD32';
+            return '#32CD32';
         }
     }
 // Creating a GeoJson layer containing features array on 
@@ -57,9 +58,9 @@ function createMap(earthquakes){
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     })
 
-    var lightmap=L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-      });
+  //  var lightmap=L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+  //      attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+  //    });
 // create basemaps object
 var baseMaps={
     "street Map":streetmap,
@@ -75,7 +76,7 @@ var overlayMaps={
 var myMap=L.map("map-id",{
     center:[37.09,-95.71],
     zoom:5,
-    layers:[earthquakes]
+    layers:[streetmap,earthquakes]
 
 });
 // create a layer control and add it to the map
@@ -93,23 +94,26 @@ L.control.layers(baseMaps, overlayMaps,{
       var div = L.DomUtil.create("div", "info legend");
   
       var grades = [0, 1, 2, 3, 4, 5];
-      var colors = [ ' #FF4500',
-                      '#FF7F50',
-                      '#FFD700', 
+      var colors = [                    
+                      '#32CD32',
+                      '#ADFF2F', 
                       '#FFE4B5',
-                      '32CD32'     
+                      '#FFD700',
+                      '#FF7F50',
+                      '#FF4500',
+                       
       ];
-  
       // Looping through
       for (var i = 0; i < grades.length; i++) {
+        console.log(colors[i]);
         div.innerHTML +=
-          "<i style='background: " + colors[i] + "'></i> " +
+          "<i style='background: " + colors[i] + "; float: left; width: 18px; height: 18px;'></i> " +
           grades[i] + (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
       }
       return div;
     };
   
-    // Finally, we our legend to the map.
+    // Finally, we add our legend to the map.
     legend.addTo(myMap);
 
 };
