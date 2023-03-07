@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-# leaflet_challenge
+
+# leaflet_Javascript
 
 Level-1: Basic Visualization
 Get the Data Set
@@ -12,14 +12,12 @@ Create a map using Leaflet that plots all of the earthquakes from the data set b
 The data markers reflect the magnitude of the earthquake by their size and and depth of the earth quake by color
 Earthquakes with higher magnitudes appear larger and earthquakes with greater depth should appear darker in color
 Popups that provide additional information about the earthquake were included when a marker is clicked
-A legend was created to provide context for the map data
-=======
-<<<<<<< HEAD
-=======
+A legend was created to provide context for the map data.
+
 ![image](https://user-images.githubusercontent.com/111449865/210871339-d5540a9b-899e-409b-8990-20994ccf76a6.png)
 
 
 
 Information when clicked on a marker,
 ![image](https://user-images.githubusercontent.com/111449865/210871838-0cec3478-c01d-4513-aeb6-e0d621b5de7b.png)
->>>>>>> 7c161b6f400b2ac9f430e36ed6466f22194a6a01
+
